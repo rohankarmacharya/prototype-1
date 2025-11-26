@@ -44,7 +44,7 @@
   display: flex;
   justify-content: flex-end;  /* right-aligned */
   align-items: flex-start;    /* start from top */
-  padding: 80px 24px 24px 0;    /* space for header plus breathing room */
+  padding: 80px 0 0 0;    /* space for header plus breathing room */
   z-index: 1000;
   backdrop-filter: blur(2px);
 }
@@ -63,6 +63,7 @@
   gap: 12px;
   overflow: hidden;
   animation: fadeIn 0.2s ease-out;
+  margin: 0;
 }
 
 /* Scrollable grid container */
@@ -76,7 +77,7 @@
 
 /* Scrollbar styling */
 .app-grid-container::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 .app-grid-container::-webkit-scrollbar-thumb {
   background-color: rgba(0,0,0,0.35);
