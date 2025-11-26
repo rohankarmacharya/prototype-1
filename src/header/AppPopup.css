@@ -1,0 +1,178 @@
+/* Header bar: full-width horizontal layout */
+.appHeaderBar {
+  width: 100vw;
+  height: 80px;
+  background-color: #EAF2FA; /* very light blue */
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Left-aligned content */
+.appHeaderLeftContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Right-aligned menu icon */
+.appHeaderRightImg {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.appHeaderRightImg:hover {
+  transform: translateY(-50%) scale(1.1);
+  opacity: 0.9;
+}
+
+/* Popup overlay (right side) */
+.app-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: flex-end;  /* right-aligned */
+  align-items: flex-start;    /* start from top */
+  padding: 80px 16px 0 0;    /* space for header */
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+/* Popup box */
+.app-popup {
+  background-color: #EAF2FA;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  max-height: 75vh;        /* limit height */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Scrollable grid container */
+.app-grid-container {
+  max-height: 290px; /* leave space for footer/admin-contact */
+  overflow-y: auto;             /* vertical scrollbar */
+  padding-right: 12px;           /* space between grid and scrollbar */
+  padding-bottom: 6px;          /* space at bottom */
+  box-sizing: content-box;
+   overflow-y: scroll;
+}
+
+/* Scrollbar styling */
+.app-grid-container::-webkit-scrollbar {
+  width: 6px;
+}
+.app-grid-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+   margin-right: 2px;
+}
+.app-grid-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Panel grid: 3 columns x 3 rows */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.app-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 10px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #1e293b;
+}
+.app-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.app-icon-container {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.app-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.app-name {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 0 2px;
+}
+
+.admin-contact {
+  text-align: center;
+  font-size: 10px;
+  color: #1262d3;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 16px;
+    max-width: 400px;
+  }
+  .app-tile {
+    padding: 12px 6px;
+  }
+  .app-icon-container {
+    width: 48px;
+    height: 48px;
+  }
+  .app-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .app-name {
+    font-size: 12px;
+  }
+}
