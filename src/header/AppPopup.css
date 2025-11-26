@@ -20,7 +20,7 @@
 /* Right-aligned menu icon */
 .appHeaderRightImg {
   position: absolute;
-  right: 20px;
+  right: 30px;
   top: 50%;
   transform: translateY(-50%);
   height: 32px;
@@ -44,7 +44,7 @@
   display: flex;
   justify-content: flex-end;  /* right-aligned */
   align-items: flex-start;    /* start from top */
-  padding: 80px 16px 0 0;    /* space for header */
+  padding: 80px 24px 24px 0;    /* space for header plus breathing room */
   z-index: 1000;
   backdrop-filter: blur(2px);
 }
@@ -52,26 +52,26 @@
 /* Popup box */
 .app-popup {
   background-color: #EAF2FA;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
   width: 100%;
-  max-width: 360px;
-  max-height: 75vh;        /* limit height */
-  padding: 20px;
+  max-width: 460px;
+  max-height: 600px;        /* limit height */
+  padding: 20px 0 20px 20px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   overflow: hidden;
   animation: fadeIn 0.2s ease-out;
 }
 
 /* Scrollable grid container */
 .app-grid-container {
-  max-height: 290px; /* leave space for footer/admin-contact */
+  max-height: 360px; /* leave space for footer/admin-contact */
   overflow-y: auto;             /* vertical scrollbar */
-  padding-right: 12px;           /* space between grid and scrollbar */
-  padding-bottom: 6px;          /* space at bottom */
+  padding-right: 14px;           /* space between grid and scrollbar */
+  padding-bottom: 54px;          /* space at bottom */
   box-sizing: content-box;
-   overflow-y: scroll;
 }
 
 /* Scrollbar styling */
@@ -79,9 +79,8 @@
   width: 6px;
 }
 .app-grid-container::-webkit-scrollbar-thumb {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0.35);
   border-radius: 3px;
-   margin-right: 2px;
 }
 .app-grid-container::-webkit-scrollbar-track {
   background-color: transparent;
@@ -106,10 +105,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 10px;
+  padding: 24px 16px;       /* increased vertical padding */
+  min-height: 70px;        /* optional: ensure a minimum height */
   background: white;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
   text-align: center;
@@ -118,7 +118,7 @@
 }
 .app-tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .app-icon-container {
@@ -128,25 +128,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 6px;
+  margin-bottom: 12px; /* increased gap between icon and title */
 }
 
+
 .app-icon {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   object-fit: contain;
 }
 
 .app-name {
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 640;
   line-height: 1.2;
   padding: 0 2px;
 }
 
+.invisible-tile {
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none; /* optional: ignore hover/click */
+  }
+  
 .admin-contact {
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   color: #1262d3;
   margin-top: 8px;
   padding-top: 8px;
@@ -156,21 +163,33 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .app-popup-overlay {
+    padding: 72px 12px 12px;
+  }
+  .app-popup {
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: 10px;
+  }
   .app-grid {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
     gap: 16px;
     max-width: 400px;
   }
+  .app-grid-container {
+    max-height: 320px;
+    padding-right: 10px;
+  }
   .app-tile {
-    padding: 12px 6px;
+    padding: 16px 12px;
   }
   .app-icon-container {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
   }
   .app-icon {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
   }
   .app-name {
     font-size: 12px;

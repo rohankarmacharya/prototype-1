@@ -28,6 +28,9 @@ const appTiles: AppTile[] = [
   { id: 'maintenance', name: 'Operation & Maintenance', icon: systemupdateIcon, accentColor: '#B5EAD7' },
   { id: 'ticketing', name: 'Ticketing Portal', icon: ticketsIcon, accentColor: '#C7CEEA' },
 ];
+const totalTiles = 16;
+const extraTiles = totalTiles - appTiles.length; // number of invisible tiles
+
 
 interface AppPopupProps {
   isOpen: boolean;
@@ -77,6 +80,10 @@ export default function AppPopup({ isOpen, onClose, triggerRef }: AppPopupProps)
           <div className="app-name">{app.name}</div>
         </div>
       ))}
+      {/* Extra invisible tiles */}
+  {Array.from({ length: extraTiles }).map((_, idx) => (
+    <div key={`placeholder-${idx}`} className="app-tile invisible-tile"></div>
+  ))}
     </div>
   </div>
   <div className="admin-contact">
